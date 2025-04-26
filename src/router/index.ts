@@ -5,11 +5,6 @@ import Login from '../views/Login.vue'
 const routes = [
   { path: '/', component: Login },
   { path: '/home', component: Home },
-  {
-    path: '/sobre',
-    name: 'Sobre',
-    component: () => import('../views/About.vue'),
-  }  
 ]
 
 const router = createRouter({
