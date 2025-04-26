@@ -44,9 +44,7 @@
 import { onMounted } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
-
 import MemoryCard from "@/components/molecules/MemoryCard.vue";
-
 import { useMemoryBoardStore } from "@/stores/cardStore";
 
 const memoryBoardStore = useMemoryBoardStore();
@@ -87,7 +85,11 @@ function startTimer() {
 }
 
 function resetGame() {
-  memoryBoardStore.resetGame();
+  memoryBoardStore.timeElapsed = 0;
+  memoryBoardStore.attempts = 0;
+  memoryBoardStore.flippedCards = [];
+  memoryBoardStore.matchedCards = [];
+  
   fetchImages();
 }
 
@@ -129,5 +131,9 @@ function flipCard(index: number) {
 
 onMounted(() => {
   fetchImages();
+});
+
+defineExpose({
+  resetGame
 });
 </script>
