@@ -1,7 +1,7 @@
 <template>
   <button
     :class="[
-      'font-bold rounded-full transition-all duration-300 cursor-pointer',
+      'font-bold rounded-full transition-all duration-300 cursor-pointer flex items-center justify-center',
       colorClass,
       sizeClass,
       customClass
