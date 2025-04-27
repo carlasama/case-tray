@@ -1,4 +1,4 @@
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=33&pause=1000&color=F727DE&width=700&height=100&lines=Case+Tray+%7C+Jogo+da+Mem%C3%B3ria)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=9E1FF7&width=700&lines=Case+Tray+%7C+Jogo+da+Mem%C3%B3ria)](https://git.io/typing-svg)
 
 ## Instruções para rodar o projeto
 
