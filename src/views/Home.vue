@@ -1,6 +1,6 @@
 <template>
   <FancyBackground>
-    <div class="flex flex-col items-center justify-center z-10 relative gap-4">
+    <div class="flex flex-col items-center justify-center z-10 relative gap-3 sm:gap-5 w-full max-w-2xl mx-auto px-2 sm:px-0 py-4 sm:py-8">
       <GameTitle />
 
       <BaseButton color="secondary" size="md" class="flex items-center gap-2" @click="openAboutModal">

@@ -1,18 +1,20 @@
 <template>
   <FancyBackground>
-    <GameTitle />
+    <div class="flex flex-col items-center justify-center w-full max-w-sm mx-auto px-2 sm:px-0 py-8 gap-6 relative z-10">
+      <GameTitle />
 
-    <BaseButton class="relative z-10 flex items-center justify-center mb-12 group gap-4" color="secondary" size="md" @click="loginWithGoogle">
-      <img
-        src="../assets/icons/google-icon.svg"
-        alt="Logo do Google"
-        width="30"
-      />
-      <span class="text-base">Entrar com Google</span>
-    </BaseButton>
+      <BaseButton class="flex items-center justify-center group gap-4 w-full sm:w-auto mb-8" color="secondary" size="md" @click="loginWithGoogle">
+        <img
+          src="../assets/icons/google-icon.svg"
+          alt="Logo do Google"
+          width="30"
+        />
+        <span class="text-base">Entrar com Google</span>
+      </BaseButton>
 
-    <div class="absolute bottom-8 text-white/70 text-sm animate-pulse">
-      Clique no botão para começar a jogar!
+      <div class="text-white/70 text-sm animate-pulse text-center w-full">
+        Clique no botão para começar a jogar!
+      </div>
     </div>
   </FancyBackground>
 </template>

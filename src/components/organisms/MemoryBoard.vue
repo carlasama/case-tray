@@ -1,6 +1,8 @@
 <template>
-  <div class="flex flex-col items-center gap-6 mt-8">
-    <div class="grid grid-cols-4 gap-4">
+  <div class="flex flex-col items-center gap-6 mt-6 px-2 sm:px-4 w-full max-w-5xl mx-auto">
+    <div
+      class="grid grid-cols-4 gap-2 sm:gap-4 mx-auto"
+    >
       <MemoryCard
         v-for="(card, index) in memoryBoardStore.shuffledCards"
         :key="card.uniqueKey"
@@ -10,11 +12,12 @@
           memoryBoardStore.flippedCards.includes(index) ||
           memoryBoardStore.matchedCards.includes(index)
         "
+        :isMatched="memoryBoardStore.matchedCards.includes(index)"
       />
     </div>
 
     <div
-      class="flex items-center justify-center gap-8 bg-white bg-opacity-80 backdrop-blur-md p-6 rounded-3xl shadow-md mt-8"
+      class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 bg-white bg-opacity-80 backdrop-blur-md p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-md mt-4 sm:mt-8 w-full max-w-2xl"
     >
       <div class="flex items-center gap-2">
         <BoltIcon class="w-6 h-6 text-purple-500" />
@@ -30,7 +33,7 @@
         >
       </div>
 
-      <BaseButton color="primary" size="sm" class="ml-4 flex items-center gap-2" @click="resetGame">
+      <BaseButton color="primary" size="sm" class="flex items-center gap-2 w-full sm:w-auto mt-2 sm:mt-0 ml-0 sm:ml-4" @click="resetGame">
         <ArrowPathIcon class="w-6 h-6 text-purple-200" /> Reiniciar
       </BaseButton>
     </div>
