@@ -25,6 +25,7 @@
     "@types/node": "^22.15.2",
     "@types/vue": "^1.0.31",
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vitest/coverage-v8": "^3.1.2",
     "@vitest/ui": "^3.1.2",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
