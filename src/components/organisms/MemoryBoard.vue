@@ -30,18 +30,16 @@
         >
       </div>
 
-      <button
-        @click="resetGame"
-        class="ml-4 bg-gradient-to-r from-pink-400 to-purple-500 text-white font-bold py-2 px-6 rounded-full shadow-md hover:scale-105 transition-all cursor-pointer"
-      >
+      <BaseButton color="primary" size="sm" class="ml-4" @click="resetGame">
         🔄 Reiniciar
-      </button>
+      </BaseButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import MemoryCard from '@/components/molecules/MemoryCard.vue';
+import BaseButton from '@/components/atoms/BaseButton.vue';
 import { useMemoryBoard } from '@/composables/useMemoryBoard';
 
 const emit = defineEmits<{
