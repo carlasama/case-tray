@@ -29,7 +29,7 @@
       <div class="flex items-center gap-2">
         <ClockIcon class="w-6 h-6 text-purple-500" />
         <span class="text-gray-700 font-bold text-base"
-          >Tempo: {{ memoryBoardStore.timeElapsed }}s</span
+          >Tempo: {{ formattedTime }}</span
         >
       </div>
 
@@ -57,6 +57,20 @@ const {
   resetGame,
   flipCard
 } = useMemoryBoard(emit);
+
+import { computed } from 'vue';
+
+const formattedTime = computed(() => {
+  const totalSeconds = memoryBoardStore.timeElapsed;
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  if (hours > 0) {
+    return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  } else {
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  }
+});
 
 defineExpose({ resetGame });
 </script>
