@@ -45,37 +45,20 @@
   </FancyBackground>
 </template>
 
-
 <script setup lang="ts">
-import { useGameStore } from "@/stores/gameStore"; // Importando o store
+import { useGameLogic } from "@/composables/useGameLogic";
 import FancyBackground from "@/components/atoms/FancyBackground.vue";
 import MemoryBoard from "@/components/organisms/MemoryBoard.vue";
 import GameSummaryModal from "@/components/molecules/GameSummaryModal.vue";
-import AboutModal from "@/components/molecules/AboutModal.vue"; 
-import { ref } from "vue";
+import AboutModal from "@/components/molecules/AboutModal.vue";
 
-const gameStore = useGameStore(); // Usando o store
-const showModal = ref(false);
-const boardRef = ref(null); // Ref do board
-
-function restartGame() {
-  gameStore.restartGame(); // Usando a action do store
-  if (boardRef.value && typeof boardRef.value.resetGame === 'function') {
-    boardRef.value.resetGame(); // Chama o método resetGame no MemoryBoard
-  } else {
-    console.error('O método resetGame não foi encontrado no MemoryBoard.');
-  }
-}
-
-function handleGameFinished(data: { time: number; attempts: number }) {
-  gameStore.finishGame(data.time, data.attempts); // Atualiza o store com o resumo
-}
-
-function startGame() {
-  gameStore.startGame(); // Inicia o jogo através do store
-}
-
-function openAboutModal() {
-  showModal.value = true;
-}
+const {
+  gameStore,
+  showModal,
+  boardRef,
+  restartGame,
+  handleGameFinished,
+  startGame,
+  openAboutModal
+} = useGameLogic();
 </script>

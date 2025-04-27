@@ -41,99 +41,18 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
-import MemoryCard from "@/components/molecules/MemoryCard.vue";
-import { useMemoryBoardStore } from "@/stores/cardStore";
-
-const memoryBoardStore = useMemoryBoardStore();
-
-const apiUrl =
-  "https://api.unsplash.com/photos/random?count=8&client_id=Ps3IRy4t2PrmzqNhd-Vr1x9Uv37TDSBRzI37hUVSKfs";
+import MemoryCard from '@/components/molecules/MemoryCard.vue';
+import { useMemoryBoard } from '@/composables/useMemoryBoard';
 
 const emit = defineEmits<{
-  (e: "game-finished", data: { time: number; attempts: number }): void;
+  (e: 'game-finished', data: { time: number; attempts: number }): void;
 }>();
 
-async function fetchImages() {
-  try {
-    const response = await axios.get(apiUrl);
-    const cards = response.data.map((image: any) => ({
-      id: uuidv4(),
-      imageUrl: image.urls.small,
-    }));
-    shuffleCards(cards);
-  } catch (error) {
-    console.error("Erro ao buscar imagens da API:", error);
-  }
-}
+const {
+  memoryBoardStore,
+  resetGame,
+  flipCard
+} = useMemoryBoard(emit);
 
-function shuffleCards(cards: any[]) {
-  const shuffled = [...cards, ...cards];
-  shuffled.sort(() => Math.random() - 0.5);
-  memoryBoardStore.shuffledCards = shuffled.map((card, index) => ({
-    ...card,
-    uniqueKey: `${card.id}-${index}`,
-  }));
-}
-
-function startTimer() {
-  setInterval(() => {
-    memoryBoardStore.timeElapsed++;
-  }, 1000);
-}
-
-function resetGame() {
-  memoryBoardStore.timeElapsed = 0;
-  memoryBoardStore.attempts = 0;
-  memoryBoardStore.flippedCards = [];
-  memoryBoardStore.matchedCards = [];
-  
-  fetchImages();
-}
-
-function flipCard(index: number) {
-  memoryBoardStore.flipCard(index);
-  if (!memoryBoardStore.gameStarted) {
-    memoryBoardStore.startGame();
-    startTimer();
-  }
-
-  if (memoryBoardStore.flippedCards.length === 2) {
-    memoryBoardStore.incrementAttempts();
-
-    const [firstIndex, secondIndex] = memoryBoardStore.flippedCards;
-
-    if (
-      memoryBoardStore.shuffledCards[firstIndex].imageUrl ===
-      memoryBoardStore.shuffledCards[secondIndex].imageUrl
-    ) {
-      memoryBoardStore.addMatchedCards([firstIndex, secondIndex]);
-      memoryBoardStore.flippedCards = [];
-
-      if (
-        memoryBoardStore.matchedCards.length ===
-        memoryBoardStore.shuffledCards.length
-      ) {
-        emit("game-finished", {
-          time: memoryBoardStore.timeElapsed,
-          attempts: memoryBoardStore.attempts,
-        });
-      }
-    } else {
-      setTimeout(() => {
-        memoryBoardStore.flippedCards = [];
-      }, 1000);
-    }
-  }
-}
-
-onMounted(() => {
-  fetchImages();
-});
-
-defineExpose({
-  resetGame
-});
+defineExpose({ resetGame });
 </script>

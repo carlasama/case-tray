@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
-export const useMemoryBoardStore = defineStore('memoryBoard', {
+export const useMemoryBoardStore = defineStore("memoryBoard", {
   state: () => ({
     shuffledCards: [] as any[], // Armazena as cartas embaralhadas
     flippedCards: [] as number[], // Armazena as cartas viradas
