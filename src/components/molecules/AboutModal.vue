@@ -1,6 +1,6 @@
 <template>
   <BaseModal :show="true" @close="closeModal" containerClass="max-w-xl mx-auto mt-10 p-8 rounded-3xl text-center">
-    <p class="text-lg mb-4 text-gray-700">
+    <p class="text-lg mb-4 text-gray-700 font-medium">
       Combine pares de cartas o mais rápido possível! Cada vez que virar duas
       cartas, conta como uma tentativa.
     </p>

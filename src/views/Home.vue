@@ -4,7 +4,7 @@
       <GameTitle />
 
       <BaseButton color="secondary" size="md" class="flex items-center gap-2" @click="openAboutModal">
-        <span>❓</span> Como jogar
+        <QuestionMarkCircleIcon class="w-6 h-6 text-purple-500" /> Como jogar
       </BaseButton>
 
       <BaseButton v-if="!gameStore.isGameStarted" color="primary" size="md" @click="startGame">
@@ -41,6 +41,7 @@ import GameSummaryModal from "@/components/molecules/GameSummaryModal.vue";
 import AboutModal from "@/components/molecules/AboutModal.vue";
 import BaseButton from "@/components/atoms/BaseButton.vue";
 import GameTitle from "@/components/atoms/GameTitle.vue";
+import QuestionMarkCircleIcon from "@/components/atoms/icons/QuestionMarkCircleIcon.vue";
 
 const {
   gameStore,
