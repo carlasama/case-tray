@@ -19,7 +19,10 @@ const props = defineProps({
   color: { type: String, default: 'primary' },
   size: { type: String, default: 'md' },
   customClass: { type: String, default: '' },
-  type: { type: String, default: 'button' }
+  type: {
+    type: String as () => 'button' | 'submit' | 'reset',
+    default: 'button'
+  }
 });
 const colorClass = {
   primary: 'bg-gradient-to-r from-pink-400 to-purple-500 text-white shadow-lg hover:scale-105 hover:shadow-xl',

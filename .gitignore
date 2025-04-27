@@ -29,3 +29,7 @@ dist-ssr
 
 # Coverage
 coverage/
+
+# Ignore JS/JS.map gerados por engano
+src/**/*.js
+src/**/*.js.map
